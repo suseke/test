@@ -1,0 +1,49 @@
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<script>
+		</script>
+	</head>
+	<!--程式中一个 set flag (设定旗标) 的概念, flag 是一个记号-->
+
+	<body bgcolor=pink>
+		<p>
+			</br>
+			<form name=display>
+				<input type="text" name="box" value="0" size=4>
+				<input type=button value="停止计时" onClick="stop()">
+				<input type=button value="继续计时" onClick="restart()">
+			</form>
+		</p>
+
+		<form>
+			<input type=button value="Show flag" onClick="alert('The flag now is '+ flag)">
+		</form>
+	</body>
+	<script>
+		x = 0
+		flag = 0
+
+		function count() {　
+			x = x + 1;
+			document.display.box.value = x　;
+			flag = 1;
+			timeoutID = setTimeout("count()", 1000);
+		}
+
+		function restart() {　
+			if(flag == 0) {　
+				count();
+			}
+		}
+		function stop(){
+			clearTimeout(timeoutID);
+			flag=0;
+		}
+		count();
+		console.log(new Date());
+		//Date 2016-10-06T07:23:19.451Z,其中T07代表什么？
+	</script>
+
+</html>

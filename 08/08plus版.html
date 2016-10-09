@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--<link rel="stylesheet " type="text/css " href="css/globle.css " />-->
+		<!--<link rel="stylesheet " type="text/css " href="css/style.css " />-->
+		<script src='js/jquery-2.0.3.js'></script>
+		<script src='js/index.js'></script>
+        <style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				font-size: 14px;
+			}
+			
+			a {
+				color: #333;
+				text-decoration: none
+			}
+			
+			ul {
+				list-style: none;
+				height: 30px;
+				border-bottom: 5px solid #F60;
+				margin-top: 20px;
+				padding-left: 50px;
+			}
+			
+			ul li {
+				float: left
+			}
+			
+			ul li a {
+				display: block;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				width: 120px;
+				background: #efefef;
+				margin-left: 1px;
+			}
+			
+			a.on,
+			a:hover {
+				background: #F60;
+				color: #fff;
+				/*width: 140px;*/
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul>
+			<li>
+				<a class="on" href="#">首　　页</a>
+			</li>
+			<li>
+				<a href="#">新闻快讯</a>
+			</li>
+			<li>
+				<a href="#">产品展示</a>
+			</li>
+			<li>
+				<a href="#">售后服务</a>
+			</li>
+			<li>
+				<a href="#">联系我们</a>
+			</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		$('a').hover(function(){
+			$(this).stop().animate({width:"150px"},300)
+		},function(){
+			$(this).stop().animate({width:"120px"},300)
+		})
+	</script>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三角形</title>
+	<style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        div{
+            position: relative;
+            height: 100px;
+            width: 500px;
+            background-color: #0000ff;
+        }
+		div::before{
+            position: absolute;
+            content: "";
+            left: 245px;
+            top: 100px;
+			width: 0;
+			height: 0;
+			/*margin: 0 auto;*/
+			border-right: 20px solid transparent;
+			border-left: 20px solid transparent;
+			border-top: 20px solid red;
+			border-bottom: 20px solid transparent;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+<p>lalal</p>
+</body>
+</html>

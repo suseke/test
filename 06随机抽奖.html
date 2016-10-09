@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>随机抽奖</title>
+   <script src="../jquery-2.0.3.js"></script>
+
+</head>
+<style>
+.beginclick,.endclick{
+    text-decoration:none;
+}
+</style>
+<body>
+    <a href="" class="beginclick">begin</a>
+    <a href="" class="endclick">end</a>
+    <h3 class="n"></h3>
+    <script>
+    //设置了setTimeout()却实现了重复在h3里放入内容的操作？
+         var auto;
+         var arry;
+         function  a(){
+          arry = ["111","222","333","444","555","666","777"];
+          var b =Math.floor(Math.random()*arry.length);
+          $('.n').text(arry[b]);
+          console.log(1);
+          auto = setTimeout(2000)//在函数内设置了延时执行
+        
+         }
+         $(".beginclick").click(function(e){
+             //e.preventDefault();
+             clearTimeout(auto);//clearTimeout()方法括号内的参数是一个定时器
+             
+         var auto1=setTimeout(a,50);
+         //auto=setInterval(a,50)
+
+         return false;
+  });
+     $(".endclick").click(function(e){
+        // e.preventDefault();
+     clearTimeout(auto);
+     //clearInterval(auto);
+     alert('恭喜你中奖了');
+     return false;
+     });
+    </script>
+</body>
+</html>

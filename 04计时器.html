@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>倒计时器</title>
+		<style>
+			div {
+				width: 200px;
+				height: 60px;
+				color: red;
+				text-align: center;
+				border: 2px solid black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="time"></div>
+		<script>
+			function daojishi() {
+				var end = new Date(2016, 9, 1); 
+				//console.log(end);
+				var now = new Date();
+				// console.log(now);
+				var m = Math.round((end - now) / 1000); //得出两个时间点相差的秒数
+				//console.log(m);
+				var day = Math.floor(m / 24 / 3600); //一天有24*3600秒，所以用秒数除以24*3600向下取整得出天数
+				var hours = Math.floor((m % (3600 * 24)) / 3600); //因为不能超出24时，即24*3600秒，所以对24*3600求余，得出的余数是秒数，需要除以3600得到小时数，Math.floor()方法向下取整数
+				var minutes = Math.floor((m % 3600) / 60); //因为不能超出60分钟，即3600秒，所以对3600求余，得出的余数是秒数，需要除以60得到分钟数，Math.floor()方法向下取整数
+				var seconds = m % 60; //因为不能超出60秒，所以对60求余，取余数
+
+				document.getElementById("time").innerHTML = "离国庆节还有" + "<br>" + day + "天" + hours + "小时" + minutes + "分" + seconds + "秒";
+			}
+			daojishi();
+			setInterval(daojishi, 1000);
+//			new Date("January 12,2006 22:19:35");
+//
+//			new Date("January 12,2006");
+//
+//			new Date(2006, 0, 12, 22, 19, 35);
+//
+//			new Date(2006, 0, 12);
+//
+//			new Date(1137075575000);
+//
+//			上面的各种创建形式都表示2006　 年1月12日这一天
+var time=new Date();
+console.log(time);
+var aday=time.getDay();
+console.log(aday);//4,代表星期四。若为0，则代表星期日。
+var anday=time.getFullYear();
+console.log(anday)//2016,代表2016年
+var aaday=time.getDate();
+console.log(aaday)//6,代表当前月份中的第6天
+var atime=time.getTime();
+console.log(atime);//1970年1月1日距今的毫秒数
+		</script>
+	</body>
+
+</html>

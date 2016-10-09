@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <script src="../jquery-2.0.3.js"></script>
+</head>
+<body>
+<!--jQuery.map() 函数详解
+1、map()函数用于处理当前jQuery对象匹配的所有元素，并将处理结果封装为新的数组。返回封装该数组的jQuery对象
+jQueryObject.map( callback )
+2、map()函数将根据匹配的所有元素遍历执行该函数，函数中的this将指向当前迭代的元素。map()还会为函数传入两个参数：第一个参数就是该元素在匹配元素中的索引，第二个参数就是该元素。
+3、每次执行callback函数的返回值将作为结果数组中的一个元素，如果函数的返回值为null或undefined，则不会被添加到结果数组中。map()函数的返回值就是封装该结果数组的jQuery对象。
+4、map()函数的返回值为jQuery类型，返回封装指定函数执行结果的数组的jQuery对象。
+一般通过get()方法来获取jQuery对象中封装的整个数组或数组的某个元素。-->
+<input id="n1" name="uid" type="checkbox" checked="checked" value="1">
+<input id="n2" name="uid" type="checkbox" checked="checked" value="2">
+<input id="n3" name="uid" type="checkbox" value="3">
+<input id="n4" name="uid" type="checkbox" checked="checked" value="4">
+
+</body>
+<script>
+    var $checkedUid = $("[name=uid]:checked");
+    console.log($checkedUid);
+
+    // 将所有匹配元素的value值封装为结果数组，并返回封装了这个结果数组的jQuery对象
+    var $result = $checkedUid.map( function(index, element){
+        // 函数内部的this === element
+        return this.value;
+    } );
+
+    // 输出封装的结果数组中索引为1的元素
+    document.writeln( $result.get( 1 ) ); // 2
+
+    // 获取封装的整个结果数组
+    var array = $result.get();
+    console.log( array ); // 1,2,4
+
+</script>
+</html>

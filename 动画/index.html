@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>动画</title>
+		
+		<link rel="stylesheet" href="css/style.css"/>
+		<script src="js/jquery-2.0.3.js"></script>
+	</head>
+
+	<body>
+		<div id="content">
+			<div class="a_background">
+				<div class="a_background_top"></div>
+				<div class="a_background_middle"></div>
+				<div class="a_background_bottom"></div>
+			</div>
+			<div id="boy" class="charector slowWalk"></div>
+		</div>
+		
+		<script>
+			var width = $('#content').width();
+			var height = $('#content').height();
+			//背景图
+			var bmiddle = $('.a_background_middle');
+			var bheight = bmiddle.height();
+			var btop = bmiddle.position().top;
+
+			var boy = $('#boy');
+			var boyHeight = boy.height();
+			
+			var pathY = btop + bheight/2;
+			boy.css({
+				top:pathY - boyHeight + 25,
+				left:width + 'px',
+				transition:'left 10s linear 0s'
+			})
+			
+			
+		</script>
+	</body>
+
+</html>

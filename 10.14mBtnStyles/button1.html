@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+	button{
+		position: relative;
+		width: 200px;
+		height: 100px;
+		overflow: hidden;
+		border: none;
+		outline: 5px solid #37474F;
+		display: block;
+		margin:100px auto;
+	}
+	
+	button::before{
+		color: white;
+		transition: 0.5s;
+		width: 200px;
+		height: 50px;
+		background-color: #7986CB;
+		content: attr(data-text);
+		position: absolute;
+		top: 0;
+		left: 0;
+		font-size: 25px;
+		line-height: 4;
+		overflow: hidden;
+	}
+	button::after{
+		color: white;
+		transition: 0.5s;
+		width: 200px;
+		height: 50px;
+		background-color: #7986CB;
+		content: attr(data-text);
+		position: absolute;
+		bottom:0;
+		left: 0;
+		font-size: 25px;
+		line-height: 0;
+		overflow: hidden;
+		
+		
+	}
+	button:hover:before{
+		transition: 0.5s;
+		top: -50px;
+	}
+	button:hover:after{
+		transition: 0.5s;
+		bottom: -50px;
+	}
+	button>span{
+		color: gray;
+		transition: 0.5s;
+		font-size: 0;
+		opacity: 0;
+	}
+	button:hover span{
+		transition: 0.5s;
+		font-size:25px ;
+		opacity: 1;
+	}
+	</style>
+	<body>
+		<button data-text="open" data-time="12345"><span>open</span></button>
+		<script type="text/javascript">
+			var bt=document.querySelector('button')
+			console.log(bt.dataset.time);
+			console.log(bt.getAttribute('data-time'))
+		</script>
+	</body>
+	
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>星级评价1</title>
+		<script src="js/jquery-2.0.3.js"></script>
+		<style>
+			body,
+			ul,
+			li,
+			div {
+				margin: 0;
+				padding: 0;
+			}
+			
+			ul,
+			li {
+				list-style-type: none;
+			}
+			
+			ul {
+				width: 150px;
+				margin: 10px auto;
+				overflow: auto;
+			}
+			
+			li {
+				width: 27px;
+				height: 28px;
+				float: left;
+				background: url(img/star.gif) no-repeat;
+			}
+			
+			div {
+				font-size: 20px;
+				color: red;
+				position: absolute;
+				left: 50%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<div id="mydiv"></div>
+		<script>
+		var lis=$('li');
+        
+			console.log(lis);
+		$('li').hover(function () {
+			for(var k=0;k<lis.length;k++){
+				lis[k].style.backgroundPosition='0 0'
+				}
+			var x=$(this).index();
+            for(var i=0; i<=x;i++){
+            	lis.get(i).style.backgroundPosition='0 -29px';
+            }
+		
+		 })
+		</script>
+	</body>
+
+</html>
+

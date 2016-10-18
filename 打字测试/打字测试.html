@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>打字测试</title>
+		<style type="text/css">
+			h1{
+				text-align:center;
+			}
+			div{
+				position:relative;
+				width: 1450px;
+				height: 600px;
+				margin: 0px auto 50px auto;
+				border: 1px solid black;
+				box-shadow:0 0 3px black;
+			}
+			div p{
+				width: 1350px;
+				height: 100px;
+				line-height: 100px;
+				margin: 50px;
+				padding-left:30px ;
+				border: 1px solid red;
+				font-size: 50px;
+			}
+			div p span{
+				display: inline-block;
+				width: 50px;
+				text-align: center;
+			}
+            section{
+                width: 200px;
+                height: 200px;
+                position: absolute;
+                bottom:0;
+                left: 50px;
+				letter-spacing:1px;
+            }
+		</style>
+        <script src="jquery-2.0.3.js"></script>
+	</head>
+	<body onkeyup="shuru(event)">
+		<h1>打字速度测试</h1>
+		<div>
+			<p id="p1"></p>
+			<p id="p2"></p>
+            <section>
+                <span id="test"></span>
+                <span id="time"></span>
+            </section>
+		</div>
+		
+		<script type="text/javascript">
+			var zimu = $('#p2')[0];
+			var zimu1 = $('#p1')[0];
+            var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var str1 = "";
+            var right = 0;
+            var wrong = 0;
+            for(var i = 0; i < str.length; i++){
+                str1 +="<span>"+str[i]+"</span>";
+            }
+            zimu1.innerHTML = str1;
+			$('#test').html("输入字数：0<br/>正确字数：0<br/>错误字数：0<br/>正确率：0%");
+			$('#time').html("<br />当前用时：00:00<br/>打字速度：0字/分");
+
+
+			function shuru(event){
+                var num = [65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90];
+                if(num.indexOf(event.keyCode) == -1){}
+                else{
+                    zimu.innerHTML += '<span>' + String.fromCharCode(event.keyCode) + '</span>';
+                    if(zimu.children[zimu.children.length-1].innerText == zimu1.children[zimu.children.length-1].innerText){
+                        zimu.children[zimu.children.length-1].style.color = 'gray';
+                        right++;
+                    }
+                    else{
+                        zimu.children[zimu.children.length-1].style.color = 'red';
+                        zimu1.children[zimu.children.length-1].style.color = 'red';
+                        wrong++;
+                    }
+                    if(zimu.children.length >= 26){
+                        str1 = "";
+                        for(var i = 0; i < 26; i++){
+                            var j = parseInt(Math.random()*26);
+                            str1 +="<span>"+str[j]+"</span>";
+                        }
+                        setTimeout(function () {
+                            zimu.innerHTML = "";
+                            zimu1.innerHTML = "";
+                            zimu1.innerHTML = str1;
+                        },10);
+                    }else{
+                    }
+                    $('#test').html("输入字数："+ (wrong+right) +"<br/>正确字数："+ right +"<br/>错误字数："+wrong+ "<br/>正确率："+parseInt(right/(wrong+right)*100)+"%");
+                }
+			}
+            var time = 0;
+            setInterval(function(){
+                time++;
+                var fen = time >= 60?(parseInt(time/60)>9?parseInt(time/60):"0"+parseInt(time/60)):"00";
+                var miao = time >= 60?(time%60>9?time%60:"0"+time%60):(time>9?time:"0"+time);
+                $('#time').html("<br />当前用时："+fen+":"+miao+"<br/>打字速度："+parseInt(right/(time/60))+"字/分");
+            },1000);
+		</script>
+	</body>
+</html>

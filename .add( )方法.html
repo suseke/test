@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="author" content="Sasuke">
+    <title></title>
+    <style>
+    </style>
+    <script src="../jquery-2.0.3.js"></script>
+    <!--《1》$("h1").add("p").add("span").css("background-color","yellow");这里用add方法添加了使用jQuery获得的已存在的p和span元素到<h1>元素集合中《2》$("p").add(document.getElementsByTagName("span")[0]).css("background-color","yellow");使用dom获得了已存在的span元素然后添加到已有的p集合中。《3》本例中add()方法新创建了元素并添加到已存在的元素组合中。
+    -->
+</head>
+<body>
+<!--<button>添加一个span元素</button>-->
+<!--<p>一个P元素。</p>-->
+<!--------------------------------------------->
+<!--<p id="n1">-->
+    <!--<span id="n2">A-->
+        <!--<span id="n3">B</span>-->
+    <!--</span>-->
+    <!--<span id="n4">C-->
+    	<!--<label id="n5">D</label>-->
+	<!--</span>-->
+<!--</p>-->
+<!-------------------------------------------------------->
+<ul class="third">
+    <li>HTML专区</li>
+    <li class="js">Javascript专区</li>
+    <li>Div+Css专区</li>
+    <li>Jquery专区</li>
+</ul>
+<script>
+//    -------------------------------------------------
+//    $("button").click(function(){
+//        $("p").add("<br><span>一个新的span元素。</span>").appendTo("p");
+//    });
+//    ------------------------------------------------
+//end()函数的返回值为jQuery类型，返回最近一次"破坏性"操作之前的jQuery对象。
+
+//只要调用jQuery对象的某个方法返回的是一个新创建的jQuery对象，则该操作被视为"过滤"操作或"破坏性"操作。jQuery对象的add()、 addBack()、 andSelf()、 children()、 closest()、 contents()、 eq()、 filter()、 find()、 first()、 has()、 last()、 map()、 next()、 nextAll()、 nextUntil()、 not()、 parent()、 parents()、 parentsUntil()、 prev()、 prevAll()、 prevUntil()、 siblings()、 slice()、 clone()等方法均属于"破坏性"操作。
+//    --------------------------------------------------
+//var $p = $("p");
+////这是一个破坏性操作，返回一个新的jQuery对象
+//var $p_span = $p.find("span");
+//document.write( $p_span.end() === $p ); // true
+//    ---------------------------------------------------
+$(".third").find(".js").css("color","blue").end()
+        .css("color","red")
+</script>
+</body>
+</html>

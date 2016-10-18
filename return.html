@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<!-- 返回的值是函数test()的值，而不能返回变量的值 -->
+<body>
+	<script type="text/javascript">
+	var a;
+		function test() {
+			/* body... */
+			var a=0;
+			return a
+		}
+		console.log(test());
+	</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>星级评价1</title>
+		<style>
+			body,
+			ul,
+			li,
+			div {
+				margin: 0;
+				padding: 0;
+			}
+			
+			ul,
+			li {
+				list-style-type: none;
+			}
+			
+			ul {
+				width: 150px;
+				margin: 10px auto;
+				overflow: auto;
+			}
+			
+			li {
+				width: 27px;
+				height: 28px;
+				float: left;
+				background: url(img/star.gif) no-repeat;
+			}
+			
+			div {
+				font-size: 20px;
+				color: red;
+				position: absolute;
+				left: 50%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<div id="mydiv"></div>
+		<script>
+		window.onload=function(){
+			var lis=document.getElementsByTagName('li');
+			var mydiv=document.getElementById('mydiv');
+			for(var i=0;i<lis.length;i++){
+				lis[i].index =i;
+				lis[i].onmouseover=function(){
+					//背景图片的初始位置
+					for(var k=0;k<lis.length;k++){
+						lis[k].style.backgroundPosition='0 0'
+					}
+					//改变背景图片的位置
+					for(var m=0;m<=this.index;m++){
+						lis[m].style.backgroundPosition='0 -29px'
+					}
+				}
+				
+			lis[i].onclick = function() {
+						var msg = ''
+						switch(this.index) {
+							case 0:
+								msg = "差评";
+								break;
+							case 1:
+								msg = "不推荐";
+								break;
+							case 2:
+								msg = "一般";
+								break;
+							case 3:
+								msg = "推荐";
+								break;
+							case 4:
+								msg = "强烈推荐";
+								break;
+							default:
+								break;
+						}
+						mydiv.innerHTML = msg; //
+					};
+				}
+			}
+			
+		</script>
+	</body>
+
+</html>

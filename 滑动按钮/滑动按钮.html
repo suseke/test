@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="author" content="买文博">
+    <script src='jquery.min.js'></script>
+    <title>滑动按钮</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .range {
+            height: 50px;
+            width: 300px;
+            outline: none;
+            display: block;
+            margin: 50px auto;
+        }
+
+        /*webkit内核的样式*/
+        /*给滑动轨道添加样式*/
+        ::-webkit-slider-runnable-track {
+            border: 1px solid #a0b3d6;
+            background: #f0f3f9;
+            border-radius: 10px; /*将轨道设为圆角的*/
+            box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; /*轨道内置阴影效果*/
+        }
+
+        ::-webkit-slider-thumb {
+            outline: 1px dotted #a0b3d6;
+            background-color: #34538b;
+        }
+
+        ::-webkit-slider-runnable-track:hover {
+            background-color: #cad5eb;
+        }
+
+        /*moz内核的样式*/
+        ::-moz-range-track {
+            border: 1px solid #a0b3d6;
+            height: 20px;
+            background: #f0f3f9;
+            border-radius: 10px; /*将轨道设为圆角的*/
+            box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; /*轨道内置阴影效果*/
+        }
+
+        ::-moz-range-thumb {
+            background: #34538b;
+            height: 30px;
+        }
+
+        .tab {
+            margin: 0 auto;
+            width: 240px;
+            height: 220px;
+            background-color: #eee;
+            padding: 20px;
+            line-height: 40px;
+        }
+
+        .tab input {
+            height: 20px;
+            margin-top: 10px;
+            float: right;
+        }
+
+        .btn {
+            width: 50px;
+            height: 30px;
+            display: block;
+            margin: 20px auto;
+
+            /*position: relative;*/
+            /*left:135px;*/
+            /*top:40px;*/
+        }
+    </style>
+</head>
+<body>
+<input class="range" type="range" min="0" max="100" step="1" value="20">
+<div class="tab">value:<span class="output"></span><br>
+    min <input class="min" value=""><br>max <input type="text" class="max"><br>
+    step<input type="text" class="step">
+    <button class="btn">更改</button>
+</div>
+
+<script>
+    function showvalue() {
+        $('.output').text($('.range').val());
+        $('.min').val($('.range').prop('min'));
+        $('.max').val($('.range').prop('max'));
+        $('.step').val($('.range').prop('step'));
+    }
+    showvalue();
+
+    var stop;
+    $('.range').focus(function () {
+        clearInterval(stop);
+        stop = setInterval(showvalue, 10)
+    })
+    $('.range').blur(function () {
+        clearInterval(stop);
+    })
+    $('.btn').click(function () {
+        $('.range').prop('min', $('.min').val());
+        $('.range').prop('max', $('.max').val());
+        $('.range').prop('step', $('.step').val())
+    })
+</script>
+</body>
+</html>
